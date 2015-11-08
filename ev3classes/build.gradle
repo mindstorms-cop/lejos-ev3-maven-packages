@@ -1,0 +1,64 @@
+apply plugin: "maven-publish"
+
+// Empty build task
+task build
+
+configurations {
+    artifact
+}
+
+dependencies {
+    artifact "net.java.dev.jna:jna:4.2.1"
+}
+
+task defaultArtifact(type: Jar, dependsOn: ":untarLejos") {
+    baseName "artifact"
+    destinationDir buildDir
+    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/ev3classes.jar")
+    outputs.upToDateWhen { false }
+}
+
+task sourcesArtifact(type: Jar, dependsOn: ":untarLejos") {
+    classifier "sources"
+    baseName "artifact"
+    destinationDir buildDir
+    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/ev3classes-src.zip")
+    outputs.upToDateWhen { false }
+}
+
+task javadocArtifact(type: Jar, dependsOn: ":untarLejos") {
+    classifier "javadoc"
+    baseName "artifact"
+    destinationDir buildDir
+    from fileTree(dir: "${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/docs/ev3/")
+    outputs.upToDateWhen { false }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "lejos-ev3-maven-packages"
+            artifactId "ev3classes"
+            version "0.9.0-beta"
+
+            artifact defaultArtifact
+            artifact sourcesArtifact
+            artifact javadocArtifact
+
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+
+                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                configurations.artifact.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+
+            }
+        }
+
+
+    }
+}
