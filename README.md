@@ -1,10 +1,8 @@
 # leJOS EV3 Maven packages
 
-Creates maven packages from leJOS EV3 distribution packages
+Creates Maven packages from leJOS EV3 distribution packages
 
-[![Circle CI](https://circleci.com/gh/Jimdo/mindstorms-cop/lejos-ev3-maven-packages/master.svg?style=shield)](https://circleci.com/gh/mindstorms-cop/lejos-ev3-maven-packages)
-
-[![Release](https://img.shields.io/github/release/mindstorms-cop/lejos-ev3-maven-packages/master.svg?label=maven)](https://jitpack.io/#mindstorms-cop/lejos-ev3-maven-packages)
+[![Circle CI](https://circleci.com/gh/mindstorms-cop/lejos-ev3-maven-packages/tree/master.svg?style=shield)](https://circleci.com/gh/mindstorms-cop/lejos-ev3-maven-packages/tree/master)
 
 ## Publish the packages to the Maven local repository 
 
@@ -12,9 +10,9 @@ Creates maven packages from leJOS EV3 distribution packages
 ./gradlew publishToMavenLocal
 ```
 
-## Including the build packages as dependencies
+## Including the built packages as dependencies
 
-We use [Jitpack](https://jitpack.io/#mindstorms-cop/lejos-ev3-maven-packages) for building maven packages. 
+We use [Jitpack](https://jitpack.io/#mindstorms-cop/lejos-ev3-maven-packages) for building Maven packages.
 
 Use the following in your Gradle configuration to get the packages:
 
