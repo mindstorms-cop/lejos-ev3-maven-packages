@@ -1,0 +1,3 @@
+test:
+  override:
+    - ./gradlew clean -Pgroup=com.github.mindstorms-cop -Pversion=$CIRCLE_SHA1 build publishToMavenLocal
