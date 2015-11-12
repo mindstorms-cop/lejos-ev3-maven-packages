@@ -8,7 +8,7 @@ configurations {
 }
 
 dependencies {
-    artifact "net.java.dev.jna:jna:4.2.1"
+    artifact "net.java.dev.jna:jna:3.2.7"
     artifact "com.github.mindstorms-cop.lejos-ev3-maven-packages:dbusjava:$version"
 }
 
