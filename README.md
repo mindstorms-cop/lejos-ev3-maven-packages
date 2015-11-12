@@ -23,6 +23,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.mindstorms-cop.lejos-ev3-maven-packages:ev3classes:0.9.0-beta'
+    compile 'com.github.mindstorms-cop.lejos-ev3-maven-packages:ev3classes:0.9.0-beta.+'
 }
 ```
