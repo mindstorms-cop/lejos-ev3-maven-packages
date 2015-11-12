@@ -1,0 +1,42 @@
+plugins {
+    id "de.undercouch.download" version "2.0.0"
+}
+
+ext {
+    lejosDownloadUrl = "https://downloads.sourceforge.net/lejos/lejos-EV3/0.9.0-beta/leJOS_EV3_0.9.0-beta.tar.gz"
+    lejosDownloadDir = buildDir
+    lejosDownloadTarget = "${buildDir}/leJOS_EV3_0.9.0-beta.tar.gz"
+}
+
+task downloadLejos(type: de.undercouch.gradle.tasks.download.Download) {
+    src lejosDownloadUrl
+    dest file(lejosDownloadTarget)
+    overwrite false
+}
+
+task untarLejos(type: Copy, dependsOn: downloadLejos) {
+    from tarTree(file(lejosDownloadTarget))
+    into file(lejosDownloadDir)
+}
+
+task clean(type: Delete) {
+    subprojects.each {
+        it.afterEvaluate {
+            def cleanTask = it.tasks.findByName('clean')
+            if (cleanTask) {
+                dependsOn(cleanTask)
+            }
+        }
+    }
+    delete buildDir
+}
+
+subprojects {
+    task clean(type: Delete) {
+        delete buildDir
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.8"
+}
