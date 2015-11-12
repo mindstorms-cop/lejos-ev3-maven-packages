@@ -9,13 +9,12 @@ configurations {
 
 dependencies {
     artifact "net.java.dev.jna:jna:4.2.1"
-    artifact "com.github.mindstorms-cop.lejos-ev3-maven-packages:dbusjava:$version"
 }
 
 task defaultArtifact(type: Jar, dependsOn: ":untarLejos") {
     baseName "artifact"
     destinationDir buildDir
-    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/ev3classes.jar")
+    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/dbusjava.jar")
     outputs.upToDateWhen { false }
 }
 
@@ -23,15 +22,7 @@ task sourcesArtifact(type: Jar, dependsOn: ":untarLejos") {
     classifier "sources"
     baseName "artifact"
     destinationDir buildDir
-    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/ev3classes-src.zip")
-    outputs.upToDateWhen { false }
-}
-
-task javadocArtifact(type: Jar, dependsOn: ":untarLejos") {
-    classifier "javadoc"
-    baseName "artifact"
-    destinationDir buildDir
-    from fileTree(dir: "${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/docs/ev3/")
+    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/dbusjava-src.zip")
     outputs.upToDateWhen { false }
 }
 
@@ -39,12 +30,11 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId "lejos-ev3-maven-packages"
-            artifactId "ev3classes"
+            artifactId "dbusjava"
             version "0.9.0-beta"
 
             artifact defaultArtifact
             artifact sourcesArtifact
-            artifact javadocArtifact
 
             pom.withXml {
                 def dependenciesNode = asNode().appendNode('dependencies')
@@ -58,7 +48,5 @@ publishing {
 
             }
         }
-
-
     }
 }

@@ -1,1 +1,1 @@
-include 'ev3classes'
+include 'ev3classes', 'dbusjava'
