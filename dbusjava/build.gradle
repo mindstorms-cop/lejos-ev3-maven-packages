@@ -8,7 +8,7 @@ configurations {
 }
 
 dependencies {
-    artifact "net.java.dev.jna:jna:4.2.1"
+    artifact "net.java.dev.jna:jna:3.2.7"
 }
 
 task defaultArtifact(type: Jar, dependsOn: ":untarLejos") {
