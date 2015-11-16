@@ -3,9 +3,9 @@ plugins {
 }
 
 ext {
-    lejosDownloadUrl = "https://downloads.sourceforge.net/lejos/lejos-EV3/0.9.0-beta/leJOS_EV3_0.9.0-beta.tar.gz"
+    lejosDownloadUrl = "https://downloads.sourceforge.net/ev3.lejos.p/0.9.1-beta/leJOS_EV3_0.9.1-beta.tar.gz"
     lejosDownloadDir = buildDir
-    lejosDownloadTarget = "${buildDir}/leJOS_EV3_0.9.0-beta.tar.gz"
+    lejosDownloadTarget = "${buildDir}/leJOS_EV3_0.9.1-beta.tar.gz"
 }
 
 task downloadLejos(type: de.undercouch.gradle.tasks.download.Download) {
