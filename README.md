@@ -4,7 +4,7 @@ Creates Maven packages from leJOS EV3 distribution packages
 
 [![Circle CI](https://circleci.com/gh/mindstorms-cop/lejos-ev3-maven-packages/tree/master.svg?style=shield)](https://circleci.com/gh/mindstorms-cop/lejos-ev3-maven-packages/tree/master)
 
-## Publish the packages to the Maven local repository 
+## Publish the packages to the Maven local repository
 
 ```shell
 ./gradlew publishToMavenLocal
@@ -23,6 +23,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.mindstorms-cop.lejos-ev3-maven-packages:ev3classes:0.9.0-beta.+'
+    compile 'com.github.mindstorms-cop.lejos-ev3-maven-packages:ev3classes:0.9.1-beta.+'
 }
 ```

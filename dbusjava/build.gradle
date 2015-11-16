@@ -14,7 +14,7 @@ dependencies {
 task defaultArtifact(type: Jar, dependsOn: ":untarLejos") {
     baseName "artifact"
     destinationDir buildDir
-    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/dbusjava.jar")
+    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.1-beta/lib/ev3/dbusjava.jar")
     outputs.upToDateWhen { false }
 }
 
@@ -22,7 +22,7 @@ task sourcesArtifact(type: Jar, dependsOn: ":untarLejos") {
     classifier "sources"
     baseName "artifact"
     destinationDir buildDir
-    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.0-beta/lib/ev3/dbusjava-src.zip")
+    from zipTree("${lejosDownloadDir}/leJOS_EV3_0.9.1-beta/lib/ev3/dbusjava-src.zip")
     outputs.upToDateWhen { false }
 }
 
@@ -31,7 +31,7 @@ publishing {
         maven(MavenPublication) {
             groupId "lejos-ev3-maven-packages"
             artifactId "dbusjava"
-            version "0.9.0-beta"
+            version "0.9.1-beta"
 
             artifact defaultArtifact
             artifact sourcesArtifact
